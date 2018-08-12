@@ -2,10 +2,20 @@
   "name": "shifttome",
   "version": "0.1.0",
   "private": true,
+  "prettier": {
+    "singleQuote": "true",
+    "shiftWidth": "120"
+  },
   "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
+    "clipboard-js": "^0.3.6",
+    "halogenium": "^2.2.3",
+    "history": "^4.7.2",
+    "jquery": "^3.3.1",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react-scripts-ts": "2.17.0"
+    "react-router-dom": "^4.3.1",
+    "request": "^2.87.0"
   },
   "scripts": {
     "start": "react-scripts-ts start",
@@ -14,10 +24,15 @@
     "eject": "react-scripts-ts eject"
   },
   "devDependencies": {
+    "@types/bootstrap": "^4.1.2",
+    "@types/history": "^4.7.0",
     "@types/jest": "^23.3.1",
     "@types/node": "^10.5.6",
     "@types/react": "^16.4.7",
     "@types/react-dom": "^16.0.6",
+    "@types/react-router-dom": "^4.3.0",
+    "@types/request": "^2.47.1",
+    "react-scripts-ts": "^2.17.0",
     "typescript": "^3.0.1"
   }
 }

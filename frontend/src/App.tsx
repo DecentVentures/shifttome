@@ -1,20 +1,26 @@
+import { createBrowserHistory } from 'history';
 import * as React from 'react';
+import { Route, Router, Switch } from 'react-router-dom';
 import './App.css';
+import { MainContainer } from './containers/Main/Main';
+import { ViewContainer } from './containers/View/View';
 
-import logo from './logo.svg';
+// tslint: disable-next-line
+const customHistory = createBrowserHistory();
 
 class App extends React.Component {
   public render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-      </div>
+      <Router history={customHistory}>
+        <Switch>
+          <Route exact={true} path="/" component={MainContainer} />
+          <Route
+            exact={true}
+            path="/view/:address?"
+            component={ViewContainer}
+          />
+        </Switch>
+      </Router>
     );
   }
 }

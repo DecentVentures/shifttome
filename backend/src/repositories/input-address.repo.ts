@@ -1,14 +1,14 @@
 import { DefaultCrudRepository, juggler } from "@loopback/repository";
-import { DestinationAddress } from "../models";
 import { inject } from "@loopback/core";
+import { InputAddress } from "../models/input-address.model";
 
 export class InputAddressRepository extends DefaultCrudRepository<
-  DestinationAddress,
-  typeof DestinationAddress.prototype.address
+  InputAddress,
+  typeof InputAddress.prototype.address
 > {
   constructor(
     @inject("datasources.db") protected datasource: juggler.DataSource
   ) {
-    super(DestinationAddress, datasource);
+    super(InputAddress, datasource);
   }
 }

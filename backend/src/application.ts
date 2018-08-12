@@ -14,6 +14,8 @@ import {
 /* tslint:enable:no-unused-variable */
 
 import { DbDataSource } from "./datasources/db.datasource";
+import { DestinationAddressRepository } from "./repositories/destination-address.repo";
+import { InputAddressRepository } from "./repositories/input-address.repo";
 
 export class ShifttomeApplication extends BootMixin(
   RepositoryMixin(RestApplication)
@@ -49,6 +51,8 @@ export class ShifttomeApplication extends BootMixin(
   async start() {
     await super.start();
 
+    this.repository(DestinationAddressRepository);
+    this.repository(InputAddressRepository);
     const server = await this.getServer(RestServer);
     const port = await server.get(RestBindings.PORT);
     console.log(`Server is running at http://127.0.0.1:${port}`);

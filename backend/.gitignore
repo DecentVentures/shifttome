@@ -20,3 +20,4 @@ npm-debug.log
 dist8/*
 src/vendor
 src/dist
+storage.db
