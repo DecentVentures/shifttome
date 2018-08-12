@@ -32,7 +32,7 @@ export class AddressBox extends Component<Props> {
 
   async componentDidMount() {
     const currencyImage = await ShapeShiftService.getImageForCurrency(this.props.currency, true);
-    const marketInfo = await ShapeShiftService.getMarketInfoForBase('ETH');
+    const marketInfo = await ShapeShiftService.getMarketInfoForBase(this.props.baseCurrency);
     this.setState({currencyImage, marketInfo});
   }
 
@@ -43,7 +43,7 @@ export class AddressBox extends Component<Props> {
   }
 
   public render() {
-    const market = this.state.marketInfo.find( m => m.pair === `${this.props.currency}_${'ETH'}`);
+    const market = this.state.marketInfo.find( m => m.pair === `${this.props.currency}_${this.props.baseCurrency}`);
     const maybeMarketInfo = market ? 
       (<div className="market-info"><span> Min: {market.min} </span> <span> Max: {market.limit} </span></div> )
       : '';
