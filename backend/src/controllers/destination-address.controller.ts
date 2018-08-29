@@ -25,7 +25,7 @@ export class DestinationAddressController {
     protected inputAddrRepo: InputAddressRepository,
     @repository(ShiftAttemptRepository)
     protected shiftAttemptRepo: ShiftAttemptRepository
-  ) {}
+  ) {console.log('Started DestinationAddress')}
 
   @get("/destination/{address}")
   async getDestinationAddress(@param.path.string("address") addr: string) {

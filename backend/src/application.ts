@@ -17,7 +17,6 @@ import { DbDataSource } from "./datasources/db.datasource";
 import { DestinationAddressRepository } from "./repositories/destination-address.repo";
 import { InputAddressRepository } from "./repositories/input-address.repo";
 import { ShiftAttemptRepository } from "./repositories/shift-attempt.repo";
-import { Workers } from "./workers";
 
 export class ShifttomeApplication extends BootMixin(
   RepositoryMixin(RestApplication)
@@ -60,6 +59,5 @@ export class ShifttomeApplication extends BootMixin(
     const port = await server.get(RestBindings.PORT);
     console.log(`Server is running at http://127.0.0.1:${port}`);
     console.log(`Try http://127.0.0.1:${port}/ping`);
-    Workers.start();
   }
 }

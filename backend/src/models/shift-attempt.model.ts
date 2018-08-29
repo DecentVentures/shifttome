@@ -4,12 +4,14 @@ import { Entity, model, property, hasMany } from "@loopback/repository";
 export class ShiftAttempt extends Entity {
   @property({
     type: "string",
+    id: true,
     required: true
   })
   inputCurrency: string;
 
   @property({
     type: "string",
+    id: true,
     required: true
   })
   outputCurrency: string;
