@@ -16,6 +16,7 @@ import { Filter } from "@loopback/repository/dist8/src/query";
 import { InputAddress } from "../models/input-address.model";
 import { ShiftAttemptRepository } from "../repositories/shift-attempt.repo";
 import { ShiftAttempt } from "../models/shift-attempt.model";
+import { ShapeShift } from "../services/ShapeShift";
 
 export class DestinationAddressController {
   constructor(
@@ -25,7 +26,9 @@ export class DestinationAddressController {
     protected inputAddrRepo: InputAddressRepository,
     @repository(ShiftAttemptRepository)
     protected shiftAttemptRepo: ShiftAttemptRepository
-  ) {console.log('Started DestinationAddress')}
+  ) {
+    console.log("Started DestinationAddress");
+  }
 
   @get("/destination/{address}")
   async getDestinationAddress(@param.path.string("address") addr: string) {
@@ -76,12 +79,14 @@ export class DestinationAddressController {
       let inputsToCreate = new Array<ShiftAttempt>();
       if (currency !== destination.currency) {
         console.log("Generating shift for ", currency);
+        const id = ShapeShift.getID(destination, currency);
         generationPromises.push(
           this.shiftAttemptRepo.create({
             inputCurrency: currency,
             outputCurrency: destination.currency,
             address: destination.address,
-            status: 'pending'
+            status: "pending",
+            id
           })
         );
       }

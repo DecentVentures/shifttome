@@ -7,18 +7,21 @@ export class ShiftAttempt extends Entity {
     id: true,
     required: true
   })
+  id: string;
+  @property({
+    type: "string",
+    required: true
+  })
   inputCurrency: string;
 
   @property({
     type: "string",
-    id: true,
     required: true
   })
   outputCurrency: string;
 
   @property({
     type: "string",
-    id: true,
     required: true
   })
   address: string;

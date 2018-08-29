@@ -1,6 +1,7 @@
 import * as request from "request";
 import { InputAddress } from "../models/input-address.model";
 import { currencies } from "../constants/currencies";
+import { DestinationAddress } from "../models/destination-address.model";
 
 export type ShapeShiftResponse = {
   deposit: string;
@@ -78,5 +79,13 @@ export class ShapeShift {
       throw new Error("both input and output currencies must exist");
     }
     return `${input.symbol}_${output.symbol}`.toLowerCase();
+  }
+
+  static getID(destination: DestinationAddress, inputCurrency: string) {
+    const id = `${destination.address}_${ShapeShift.toPair(
+      inputCurrency,
+      destination.currency
+    )}`;
+    return id;
   }
 }
