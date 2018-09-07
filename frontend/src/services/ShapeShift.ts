@@ -20,10 +20,13 @@ export class ShapeShiftService {
   static loadedCoins: Currency[] = new Array<Currency>();
   static lookup: {[coin: string]: Currency} = {};
   static async getCoins() {
-    return new Promise<Currency[]>((resolve) => {
+    return new Promise<Currency[]>((resolve, reject) => {
       request(
         'https://cors.shapeshift.io/getcoins',
         (err, httpResponse, body) => {
+          if (err || !body) {
+          reject({status: 'Bad shapeshift response', err, body});
+          }
           const json = JSON.parse(body);
           const coins = Object.values(json) as Currency[];
           const availableCoins = coins.filter(
